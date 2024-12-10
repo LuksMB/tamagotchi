@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://csgvmon3qhmn4"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_3tyxk"]
+[ext_resource type="Texture2D" uid="uid://drx0ewi3ut8gp" path="res://assets/sprites/characters/gato/sprite_gato_idle.png" id="1_wtju0"]
+[ext_resource type="Texture2D" uid="uid://dt0wasdiiswvi" path="res://assets/sprites/ui/backgrounds/sprite_bg.png" id="2_r0q05"]
+[ext_resource type="Texture2D" uid="uid://d02m011bwitr8" path="res://assets/sprites/ui/backgrounds/sprite_bg_display.png" id="2_s17wf"]
+[ext_resource type="Texture2D" uid="uid://d0vm3eo0q6h17" path="res://assets/sprites/ui/buttons/sprite_button_green.png" id="3_lsx1k"]
+[ext_resource type="Texture2D" uid="uid://xdjhns2cchda" path="res://assets/sprites/ui/buttons/sprite_button_pink.png" id="4_no5t5"]
+[ext_resource type="Texture2D" uid="uid://8bhl5w4ixyf4" path="res://assets/sprites/ui/buttons/sprite_button_white.png" id="5_c84tf"]
+[ext_resource type="Texture2D" uid="uid://bhulu5hqpb2p8" path="res://assets/sprites/ui/buttons/sprite_button_right.png" id="6_jly2u"]
+[ext_resource type="Texture2D" uid="uid://d3ja6plmowjnu" path="res://assets/sprites/ui/buttons/sprite_button_left.png" id="7_dhgwi"]
+[ext_resource type="Texture2D" uid="uid://cae5qxjmlve2t" path="res://assets/sprites/resources/itens/sprite_tapete.png" id="8_pcrxh"]
+[ext_resource type="Texture2D" uid="uid://dn2y4d3oplhsn" path="res://assets/sprites/resources/references/ref.png" id="10_dixg3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aq4lc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wtju0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_3tyxk")
+
+[node name="casca" type="Sprite2D" parent="."]
+position = Vector2(355, 320)
+texture = ExtResource("2_r0q05")
+
+[node name="SpriteBgDisplay" type="Sprite2D" parent="casca"]
+position = Vector2(-177, -169)
+texture = ExtResource("2_s17wf")
+centered = false
+
+[node name="PinkButton" type="TextureButton" parent="casca"]
+offset_left = -39.0
+offset_top = 247.0
+offset_right = 41.0
+offset_bottom = 294.0
+texture_normal = ExtResource("4_no5t5")
+
+[node name="GreenButton" type="TextureButton" parent="casca"]
+offset_left = -127.0
+offset_top = 245.0
+offset_right = -83.0
+offset_bottom = 290.0
+texture_normal = ExtResource("3_lsx1k")
+
+[node name="WhiteButton" type="TextureButton" parent="casca"]
+offset_left = 81.0
+offset_top = 244.0
+offset_right = 128.0
+offset_bottom = 289.0
+texture_normal = ExtResource("5_c84tf")
+
+[node name="RightArrowButton" type="TextureButton" parent="casca"]
+offset_left = 203.0
+offset_top = -5.0
+offset_right = 260.0
+offset_bottom = 106.0
+texture_normal = ExtResource("6_jly2u")
+
+[node name="LeftArrowButton" type="TextureButton" parent="casca"]
+offset_left = -259.0
+offset_top = -5.0
+offset_right = -202.0
+offset_bottom = 106.0
+texture_normal = ExtResource("7_dhgwi")
+
+[node name="SpriteTapete" type="Sprite2D" parent="."]
+position = Vector2(235, 448)
+texture = ExtResource("8_pcrxh")
+centered = false
+
+[node name="gato" type="AnimatedSprite2D" parent="."]
+position = Vector2(266, 285)
+sprite_frames = SubResource("SpriteFrames_aq4lc")
+centered = false
+
+[node name="Ref" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(355, 320)
+texture = ExtResource("10_dixg3")
+
+[connection signal="pressed" from="casca/PinkButton" to="." method="_on_pink_button_pressed"]
+[connection signal="pressed" from="casca/GreenButton" to="." method="_on_green_button_pressed"]
+[connection signal="pressed" from="casca/WhiteButton" to="." method="_on_white_button_pressed"]
+[connection signal="pressed" from="casca/RightArrowButton" to="." method="_on_right_arrow_button_pressed"]
+[connection signal="pressed" from="casca/LeftArrowButton" to="." method="_on_left_arrow_button_pressed"]
